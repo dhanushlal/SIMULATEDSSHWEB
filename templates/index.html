@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SSH Simulation</title>
+    <style>
+        body {
+            background-color: #1e1e2f;
+            color: #ffffff;
+            font-family: monospace;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #terminal {
+            background-color: #2d2d44;
+            padding: 20px;
+            border-radius: 10px;
+            height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            margin-bottom: 10px;
+        }
+
+        #commandInput {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 16px;
+        }
+
+        a {
+            color: #66ccff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>SSH Simulation Web</h1>
+    <a href="/history">View Command History</a> |
+    <a href="/files">Files</a> |
+    <a href="/logout">Logout</a>
+
+    <div id="terminal"></div>
+    <input type="text" id="commandInput" placeholder="Type a command and press Enter...">
+
+    <script>
+        const terminal = document.getElementById("terminal");
+        const input = document.getElementById("commandInput");
+
+        input.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                const command = input.value.trim();
+                if (!command) return;
+
+                terminal.innerHTML += $ ${command}\n;
+
+                fetch("/execute", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ command: command })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    terminal.innerHTML += ${data.output}\n;
+                    terminal.scrollTop = terminal.scrollHeight;
+                })
+                .catch(error => {
+                    terminal.innerHTML += Error: ${error}\n;
+                });
+
+                input.value = "";
+            }
+        });
+    </script>
+</body>
+</html>

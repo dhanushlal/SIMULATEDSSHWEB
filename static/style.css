@@ -1,0 +1,28 @@
+body {
+    font-family: monospace;
+    background-color: #121212;
+    color: #00ff00;
+    margin: 0;
+    padding: 20px;
+}
+
+#terminal {
+    background-color: #000000;
+    border: 2px solid #444;
+    padding: 15px;
+    width: 90%;
+    height: 400px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+}
+
+input[type="text"] {
+    background: black;
+    color: #00ff00;
+    border: none;
+    border-bottom: 1px solid #00ff00;
+    width: 90%;
+    font-size: 1em;
+    padding: 5px;
+}
