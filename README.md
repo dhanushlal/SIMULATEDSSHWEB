@@ -28,3 +28,20 @@ A web-based simulated SSH (Secure Shell) interface built using **Flask**, allowi
 
 ## Folder Structure
 
+
+---
+
+## Technologies Used
+
+- Python
+- Flask
+- HTML + CSS
+- MySQL Connector
+
+---
+
+## How to Run
+
+```bash
+pip install flask mysql-connector-python
+python app.py
