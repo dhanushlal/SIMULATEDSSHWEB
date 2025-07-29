@@ -6,6 +6,15 @@ A web-based simulated SSH (Secure Shell) interface built using **Flask**, allowi
 
 ---
 
+## 📚 Table of Contents
+
+- [🚀 Features](#-features)
+- [📁 Folder Structure](#-folder-structure)
+- [🛠️ Technologies Used](#️-technologies-used)
+- [🧪 How to Run](#-how-to-run)
+
+---
+
 ## 🚀 Features
 
 - 🌐 Web-based SSH-like interface
